@@ -1,0 +1,29 @@
+# Universal Business Solution Framework - Base Requirements
+# These are the core dependencies used by framework patterns
+
+# Web scraping
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
+
+# Data processing
+pandas>=2.0.0
+
+# Task scheduling
+schedule>=1.2.0
+
+# Web dashboard
+flask>=3.0.0
+flask-cors>=4.0.0
+
+# Environment configuration
+python-dotenv>=1.0.0
+
+# Documentation generation
+python-docx>=0.8.11
+
+# Optional: Uncomment as needed
+# numpy>=1.24.0
+# sqlalchemy>=2.0.0
+# plotly>=5.14.0
+# twilio>=8.2.0  # For SMS alerts
