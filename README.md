@@ -6,154 +6,101 @@ Built for use with Claude Code to enable lightning-fast development of new busin
 
 ---
 
-## What Is This?
+## Overview
 
-A framework of battle-tested patterns, templates, and components extracted from real enterprise projects. Instead of building from scratch, assemble pre-built components to create new tools in hours instead of weeks.
+**29 patterns** across **9 categories** - everything you need to build:
+- Data monitoring systems
+- ETL pipelines
+- Alert & notification systems
+- Business analysis tools
+- Executive dashboards
+- Automated scrapers
 
 ### Example Projects Built With This Framework:
 - **NYPD Procurement Tracker** - Web scraping + change detection + dashboard (4 hours)
 - **Application Rationalization Tool** - Data analysis + documentation generation (6 hours)
-- **Capital Projects Planner** - Data processing + reporting (5 hours)
+- **Contract Oversight System** - Scoring + alerts + risk classification
+- **Stock Analysis Tool** - ML forecasting + ensemble prediction
 
 ---
 
-## Quick Start (3 Steps)
+## Quick Start
 
-### Step 1: Clone or Download Framework
 ```bash
-cd C:\Users\dada_\OneDrive\Documents
-# Framework is already here: universal-business-solution-framework/
-```
+# Create a new project with patterns
+python create_project.py --name "My Project" --patterns dashboard,notifications-suite
 
-### Step 2: Create a New Project
-```bash
-cd universal-business-solution-framework
-
-# Interactive mode (recommended for first time)
+# Or interactive mode
 python create_project.py --interactive
 
-# Or specify directly
-python create_project.py --name "My Business Tool" --patterns scraping,change-detection,email,dashboard
-```
-
-### Step 3: Customize and Run
-```bash
-cd my-business-tool
-pip install -r requirements.txt
-# Edit src/ files for your specific use case
-python web/app.py  # If using dashboard
+# List all available patterns
+python create_project.py --list-patterns
 ```
 
 ---
 
-## Available Patterns
+## Pattern Categories
 
-### 1. Web Scraping
-Extract data from websites using BeautifulSoup
-- HTML parsing
-- Table extraction
-- CSV/JSON export
-- Error handling
-
-### 2. Change Detection
-Track what's new or changed over time
-- MD5 hash-based fingerprinting
-- Baseline comparison
-- History tracking
-- New/removed item detection
-
-### 3. Email Alerts
-Send professional email notifications
-- HTML + plain-text emails
-- SMTP integration (Gmail, Outlook, custom)
-- Template system
-- Professional formatting
-
-### 4. Web Dashboard
-Real-time monitoring interface
-- Flask backend
-- REST APIs
-- Chart.js visualizations
-- Auto-refresh
-- Responsive design
-
-### 5. Task Scheduling
-Automated task execution
-- Configurable intervals
-- Background operation
-- Error handling
-- Multi-task support
-
-### 6. Data Analysis
-Process and analyze data
-- Pandas DataFrame operations
-- Excel/CSV processing
-- Statistical analysis
-- Data validation
-
-### 7. Documentation Generation
-Create professional docs
-- Markdown generation
-- Word document creation
-- Problem/solution statements
-- Executive summaries
+| Category | Patterns | Description |
+|----------|----------|-------------|
+| **Core** | 7 | Scraping, change detection, email, scheduler, dashboard, analysis, docs |
+| **Scoring** | 4 | Weighted scoring, alert rules, risk classification, benchmarking |
+| **ML/AI** | 4 | Feature pipeline, time series, ensemble, model registry |
+| **Razors** | 3 | Temporal decay, filter chains, deduplication |
+| **Export** | 2 | Report generator, document builder |
+| **Notifications** | 3 | Email digest, alert aggregator, notification router |
+| **Connectors** | 3 | API client, scraper base, data source registry |
+| **Scheduling** | 3 | Job scheduler, pipeline orchestrator, checkpoint manager |
 
 ---
 
 ## Common Pattern Combinations
 
 ### Monitoring System
-**Patterns**: `scraping,change-detection,email,dashboard`
+```bash
+python create_project.py --name "Contract Monitor" \
+  --patterns scraping,change-detection,notifications-suite,dashboard
+```
 **Use For**: Track websites for changes, get instant alerts, monitor via dashboard
-**Time**: 2-4 hours
-**Example**: NYPD Procurement Tracker
+
+### ETL Pipeline with Recovery
+```bash
+python create_project.py --name "Data Pipeline" \
+  --patterns connectors-suite,scheduling-suite,export-suite
+```
+**Use For**: Extract, transform, load data with checkpoint/resume capability
 
 ### Business Analysis Tool
-**Patterns**: `analysis,documentation,dashboard`
-**Use For**: Analyze datasets, generate reports, executive dashboards
-**Time**: 4-6 hours
-**Example**: Application Rationalization Tool
+```bash
+python create_project.py --name "Portfolio Analyzer" \
+  --patterns scoring-suite,razors-suite,dashboard
+```
+**Use For**: Score, classify, and analyze business data
 
-### Data Pipeline
-**Patterns**: `scraping,scheduler,email`
-**Use For**: Extract data regularly, process, notify on completion
-**Time**: 3-5 hours
+### ML Forecasting System
+```bash
+python create_project.py --name "Demand Forecaster" \
+  --patterns ml-suite,dashboard,export-suite
+```
+**Use For**: Time series forecasting with ensemble models
 
-### Alert System
-**Patterns**: `change-detection,email,scheduler`
-**Use For**: Monitor for specific events, instant notifications
-**Time**: 2-3 hours
+### Alert & Notification System
+```bash
+python create_project.py --name "Alert Center" \
+  --patterns notifications-suite,scheduling-suite
+```
+**Use For**: Aggregate alerts, dedupe, route to Slack/Teams/Email
 
 ---
 
-## How to Use With Claude Code
+## Documentation
 
-### Method 1: Direct Prompt
-```
-Open Claude Code in this framework directory and say:
-
-"Using this framework, build a tool that:
-- Scrapes [URL] for [data]
-- Detects when new [items] appear
-- Sends email alerts
-- Shows a dashboard
-
-Use patterns: scraping + change-detection + email + dashboard"
-```
-
-### Method 2: Generate Then Customize
-```bash
-# Generate project structure
-python create_project.py --name "NYC Building Permits" --patterns scraping,change-detection,email
-
-# Open in Claude Code
-cd nyc-building-permits
-
-# Prompt Claude:
-"Customize this project to scrape NYC building permits from [URL].
-The permit fields are: address, type, date, status.
-Send alerts when new permits are added."
-```
+| Document | Description |
+|----------|-------------|
+| [Quick Start Guide](docs/QUICK-START.md) | Get up and running in 5 minutes |
+| [Pattern Reference](docs/PATTERNS.md) | Detailed documentation for all 29 patterns |
+| [Examples](docs/EXAMPLES.md) | Real-world usage examples |
+| [API Reference](docs/API.md) | Complete API documentation |
 
 ---
 
@@ -161,94 +108,78 @@ Send alerts when new permits are added."
 
 ```
 universal-business-solution-framework/
-├── .claude/
-│   └── framework-context.md       # Explains framework to Claude Code
 ├── patterns/
-│   ├── scraping_patterns.py       # Web scraping components
-│   ├── change_detection_patterns.py  # Change tracking
-│   ├── email_patterns.py          # Email alerts
-│   ├── scheduler_patterns.py      # Task scheduling
-│   └── ... (more patterns)
-├── templates/
-│   ├── data-pipeline/             # Pipeline templates
-│   ├── web-dashboard/             # Dashboard templates
-│   └── ... (more templates)
-├── examples/
-│   └── Links to completed projects
-├── docs/
-│   └── Framework documentation
-├── create_project.py              # Project generator
-└── README.md                      # This file
+│   ├── core/           # Base patterns (scraping, email, etc.)
+│   ├── scoring/        # Scoring & risk patterns
+│   ├── ml/             # Machine learning patterns
+│   ├── razors/         # Analysis & filtering patterns
+│   ├── export/         # Report & document generation
+│   ├── notifications/  # Alert & notification patterns
+│   ├── connectors/     # Data connection patterns
+│   └── scheduling/     # Job & pipeline orchestration
+├── templates/          # Project templates
+├── examples/           # Example projects
+├── docs/               # Documentation
+├── create_project.py   # Project generator
+└── requirements.txt    # Dependencies
 ```
 
 ---
 
-## Commands Reference
+## Key Features
 
-### List Available Patterns
-```bash
-python create_project.py --list-patterns
+### Zero-Dependency Patterns
+Most patterns work with Python standard library only. Optional dependencies (pandas, beautifulsoup4) enhance functionality.
+
+### Factory Functions
+Every pattern includes factory functions for common use cases:
+```python
+from patterns.scheduling import create_simple_scheduler
+from patterns.notifications import create_slack_router
+from patterns.connectors import create_gentle_scraper
 ```
 
-### Create Project (Interactive)
-```bash
-python create_project.py --interactive
+### Fluent APIs
+Builder patterns for complex configurations:
+```python
+from patterns.connectors import APIClientBuilder
+
+client = (APIClientBuilder("https://api.example.com")
+    .with_bearer_token("token")
+    .with_rate_limit(10)
+    .with_retry(max_retries=3)
+    .build())
 ```
 
-### Create Project (Direct)
-```bash
-python create_project.py --name "Project Name" --patterns scraping,email,dashboard
-```
+### Composable Design
+Patterns work together seamlessly:
+```python
+from patterns.connectors import create_gentle_scraper
+from patterns.notifications import create_standard_aggregator, create_slack_router
 
-### Common Pattern Combinations
-```bash
-# Monitoring system
---patterns scraping,change-detection,email,dashboard,scheduler
+# Scrape -> Analyze -> Alert -> Notify
+scraper = create_gentle_scraper()
+aggregator = create_standard_aggregator()
+router = create_slack_router(webhook_url)
 
-# Business analysis
---patterns analysis,documentation,dashboard
+data = scraper.get_json("https://api.example.com/data")
+aggregator.add_alert("New Data", f"Found {len(data)} items")
 
-# Data pipeline
---patterns scraping,scheduler,email
-
-# Alert system
---patterns change-detection,email,scheduler
+for alert in aggregator.get_pending_alerts():
+    router.send(Notification(title=alert.title, message=alert.message))
 ```
 
 ---
 
-## Example Projects (Reference)
+## Version History
 
-### 1. NYPD Procurement Tracker
-**Location**: `C:\Users\dada_\OneDrive\Documents\nypd-procurement-tracker\`
-**Patterns**: Scraping + Change Detection + Email + Dashboard + Scheduler
-**Time to Build**: ~4 hours
-**Business Value**: First-mover advantage on opportunities
-
-**Key Features**:
-- Scrapes 76 procurement opportunities
-- Detects new opportunities instantly
-- Sends HTML email alerts
-- Real-time web dashboard with charts
-- Auto-refresh every 5 minutes
-
-### 2. Application Rationalization Tool
-**Location**: `C:\Users\dada_\OneDrive\Documents\application-rationalization-tool\`
-**Patterns**: Data Analysis + Documentation + Dashboard
-**Time to Build**: ~6 hours
-**Business Value**: 23x ROI in Year 1
-
-**Key Features**:
-- Analyzes application portfolios
-- Identifies redundancies
-- Generates comprehensive documentation
-- Word document generation
-
-### 3. Capital Projects Planner
-**Location**: `C:\Users\dada_\OneDrive\Documents\application-rationalization-tool\capital_projects\`
-**Patterns**: Data Processing + Analysis + Documentation
-**Time to Build**: ~5 hours
-**Business Value**: 44x ROI in Year 1
+| Version | Focus | Total Patterns |
+|---------|-------|----------------|
+| **v1.4** | Infrastructure (Notifications, Connectors, Scheduling) | 29 |
+| v1.3 | Analysis (Razors, Export) | 20 |
+| v1.2 | ML/AI (Features, Forecasting, Ensemble, Registry) | 15 |
+| v1.1 | Scoring (Weighted, Alerts, Risk, Benchmarks) | 11 |
+| v1.0 | Core patterns | 7 |
 
 ---
 
@@ -267,15 +198,20 @@ python create_project.py --name "Project Name" --patterns scraping,email,dashboa
 - What's the ROI?
 - Who are the users?
 
-### 2. Use Modular Design
-- Each pattern is independent
-- Easy to add/remove features
-- Test components separately
+### 2. Use Suite Patterns
+Suite patterns include all related patterns:
+- `scoring-suite` - All scoring patterns
+- `ml-suite` - All ML patterns
+- `notifications-suite` - All notification patterns
+- `connectors-suite` - All connector patterns
+- `scheduling-suite` - All scheduling patterns
 
-### 3. Document Everything
-- Use generated README as starting point
-- Add setup guides
-- Include inline comments
+### 3. Leverage Factory Functions
+```python
+# Instead of configuring from scratch
+from patterns.notifications import create_standard_aggregator
+aggregator = create_standard_aggregator(max_per_hour=20)
+```
 
 ### 4. Security First
 - Environment variables for secrets
@@ -284,20 +220,34 @@ python create_project.py --name "Project Name" --patterns scraping,email,dashboa
 
 ---
 
-## Extending the Framework
+## How to Use With Claude Code
 
-### Add New Patterns
+### Method 1: Direct Prompt
+```
+Open Claude Code in this framework directory and say:
 
-1. Create pattern file in `patterns/`
-2. Document in `.claude/framework-context.md`
-3. Add to `create_project.py` AVAILABLE_PATTERNS
-4. Test with example project
+"Using this framework, build a tool that:
+- Scrapes [URL] for [data]
+- Detects when new [items] appear
+- Sends Slack notifications
+- Shows a dashboard
 
-### Add New Templates
+Use patterns: scraping + change-detection + notifications-suite + dashboard"
+```
 
-1. Create template structure in `templates/`
-2. Add logic to `create_project.py`
-3. Document usage
+### Method 2: Generate Then Customize
+```bash
+# Generate project structure
+python create_project.py --name "NYC Building Permits" --patterns scraping,notifications-suite
+
+# Open in Claude Code
+cd nyc-building-permits
+
+# Prompt Claude:
+"Customize this project to scrape NYC building permits from [URL].
+The permit fields are: address, type, date, status.
+Send Slack alerts when new permits are added."
+```
 
 ---
 
@@ -317,26 +267,6 @@ python create_project.py --list-patterns
 - Check Python version (3.8+)
 - Ensure write permissions
 - Verify pattern names are correct
-
----
-
-## Support
-
-**Framework Issues**: Check `.claude/framework-context.md` for detailed pattern documentation
-
-**Pattern Examples**: Review example projects in `examples/` links
-
-**Claude Code**: Reference `.claude/framework-context.md` when prompting Claude
-
----
-
-## Version
-
-**v1.0** - Initial framework release
-- 7 core patterns
-- 3 reference projects
-- Project generator
-- Complete documentation
 
 ---
 
